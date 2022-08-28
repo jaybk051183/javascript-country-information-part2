@@ -1,0 +1,1 @@
+{"mappings":"AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA","sources":["src/styles.css"],"sourcesContent":["\r\n\r\n.button {\r\n    position: absolute;\r\n    top:50%;\r\n    background-color:#0a0a23;\r\n    color: #fff;\r\n}"],"names":[],"version":3,"file":"index.be5cf2f4.css.map","sourceRoot":"/__parcel_source_root/"}
