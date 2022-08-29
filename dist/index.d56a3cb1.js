@@ -462,36 +462,43 @@ function hmrAcceptRun(bundle, id) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
-const searchField = document.getElementById("search-form");
-searchField.addEventListener("submit", getCountryData);
+const searchForm = document.getElementById("search-form");
+searchForm.addEventListener("submit", handleForm);
 const errorInfo = document.getElementById("error");
 const countryInfo = document.getElementById("country-info");
 function handleForm(e) {
     e.preventDefault();
-    getCountryData(searchField.value);
-    searchField.value = "";
+    const inputField = document.getElementById("input-field");
+    getCountryData(inputField.value);
+    inputField.value = "";
 }
-async function getCountryData() {
-    countryInfo.innerHTML = "";
-    errorInfo.innerHTML = "";
+async function getCountryData(name) {
+    countryInfo.innerHTML = ``;
+    errorInfo.innerHTML = ``;
     try {
-        const result = await _axiosDefault.default.get("https://restcountries.com/v2/name/panama");
-        const countryInfo1 = result.data[0];
+        const result = await _axiosDefault.default.get(`https://restcountries.com/v2/name/${name}`);
+        const country = result.data[0];
         console.log(result.data[0]);
-        countryInfo1.innerHTML = `
+        countryInfo.innerHTML = `
     <article>
     <span>
-    <img src="${countryInfo1.flag}" alt="countryflag">
-    <h2>${countryInfo1.name}</h2>
+    <img src="${country.flag}" alt="countryflag" width="50px">
+    <h2>${country.name}</h2>
     </span>
-    <p>${countryInfo1.name} is situated in ${countryInfo1.region}. It has a population of ${countryInfo1.population} people.</p>
-    <p>The capital is ${countryInfo1.capital} and you can pay with ${countryInfo1.currency}.</p>
-    <p>They speak ${countryInfo1.language}.</p>
+    <p>${country.name} is situated in ${country.subregion}. It has a population of ${country.population} people.</p>
+    <p>The capital is ${country.capital} ${currencyDescription(country.currencies)}.</p>
+    <p>They speak ${country.language}.</p>
     </article>
 `;
     } catch (e) {
         console.error(e);
     }
+}
+getCountryData();
+function currencyDescription(currencies) {
+    let output = "and you can pay with ";
+    if (currencies.length === 2) return output + `${currencies[0].name} and ${currencies[1].name}`;
+    return output + `${currencies[0].name}`;
 }
 
 },{"axios":"1IeuP","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"1IeuP":[function(require,module,exports) {
