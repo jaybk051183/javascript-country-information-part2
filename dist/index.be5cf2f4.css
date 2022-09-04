@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
-
+@import "https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap";
 * {
     box-sizing: border-box;
     margin: 0;
@@ -64,10 +63,11 @@ body {
     margin: 0 0 10px 0;
 }
 
-
 .error-message {
     padding: 20px 0;
     color: #a01515;
     border-radius: 10px;
 }
 
+
+/*# sourceMappingURL=index.be5cf2f4.css.map */
