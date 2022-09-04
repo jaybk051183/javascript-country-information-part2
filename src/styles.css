@@ -35,6 +35,8 @@ body {
 }
 
 .country-info-box {
+    display: flex;
+    flex-direction: column;
     border-radius: 9px;
     box-shadow: .35rem .8rem 2rem 0 rgba(0, 0, 0, 0.1);
     padding: 24px;
@@ -55,9 +57,10 @@ body {
     margin-right: 20px;
 }
 
-.flag-title {
+.flag-tittle {
     border-bottom: 1px solid;
-    display: inline-block;
+    display: flex;
+    align-items: baseline;
     margin: 0 0 10px 0;
 }
 
